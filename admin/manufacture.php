@@ -68,7 +68,7 @@ include "sidebar.php";
     // Hàm hiển thị hộp thoại xác nhận
     function confirmDelete(id_manu) {
         if (confirm("Bạn có muốn xóa manufacture này?")) {
-            window.location.href = "manufacture.php?id_manu=" + id_manu; // Chuyển hướng đến trang xóa
+            window.location.href = "xulyCRUD_admin/xulyXoa.php?id_manu=" + id_manu; // Chuyển hướng đến trang xóa
         }
     }
 </script>

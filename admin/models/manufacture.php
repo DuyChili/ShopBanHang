@@ -19,8 +19,34 @@ class Manufacture extends Db{
     function DeleteManu($id) {
         $sql = self::$connection->prepare("DELETE FROM `manufactures` WHERE `id_manu` = ?");
         $sql->bind_param("i", $id);
-        $sql->execute();
+        if ($sql->execute()) {
+            return true;
+        }
+        else{
+            return false;
+        }
+       
     }
+    function ThemManu($name){
+        $sql = self::$connection->query("INSERT INTO `manufactures`(`name_manu`) VALUES ('$name')");
+        if ($sql) {
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+    function SuaManu($name, $id){
+        $sql = self::$connection->prepare("UPDATE `manufactures` SET `name_manu`= ? WHERE id_manu = ?");
+        $sql->bind_param("si",$name,$id);
+        if ($sql->execute()) {
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
     
     
     
