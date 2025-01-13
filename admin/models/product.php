@@ -1,6 +1,33 @@
 <?php
 class Product extends Db
 {
+    public function KiemTraIdType($id_type)
+{
+    $sql = self::$connection->prepare("SELECT COUNT(*) as count FROM products WHERE type_id = ?");
+    $sql->bind_param("i", $id_type);
+    $sql->execute(); // Thực thi câu truy vấn
+    $result = $sql->get_result()->fetch_assoc();
+    if ($result['count'] > 0) {
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+public function KiemTraIdManu($id_manu)
+{
+    $sql = self::$connection->prepare("SELECT COUNT(*) as count FROM products WHERE manu_id = ?");
+    $sql->bind_param("i", $id_manu);
+    $sql->execute(); // Thực thi câu truy vấn
+    $result = $sql->get_result()->fetch_assoc();
+    if ($result['count'] > 0) {
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
     //Viet phuong thuc lay ra tat ca san pham moi nhat
     public function HienThiMotSanPham($id)
     {

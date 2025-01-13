@@ -74,3 +74,9 @@ include "sidebar.php";
 </script>
 <!-- END CONTENT -->
 <?php include "footer.php" ?>
+<?php
+if (isset($_GET['messagethongbao'])) {
+    $message = $_GET['messagethongbao'];
+    echo "<script>alert('$message');</script>";
+}
+    ?>
